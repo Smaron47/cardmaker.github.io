@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card Maker</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-4">
+        <h1 class="text-center mb-4">Card Maker</h1>
+        <div class="mb-3">
+            <label for="templateSelect" class="form-label">Select Template</label>
+            <select class="form-select" id="templateSelect">
+                <option value="template1">Creature</option>
+                <option value="template2">Mécanisme </option>
+                <option value="template3">Mécanisme </option>
+                
+            </select>
+
+        </div>
+        <h2>Select Card Elements</h2>
+
+        <!-- Dropdown for Background -->
+
+    <br>
+        <!-- Dropdown for Card Name -->
+        <label for="cardName-select">Card Name:</label>
+        <select id="cardName-select">
+            <option value="Name2.png">Card Name 1</option>
+            <option value="Name3.png">Card Name 2</option>
+            <option value="CardName2.png">Card Name 3</option>
+        </select>
+    <br>
+        <!-- Dropdown for Top Left Icon -->
+        <label for="topLeftIcon-select">Top Left Icon:</label>
+        <select id="topLeftIcon-select">
+            <option value="Front (1).png">Type 1</option>
+            <option value="Front (2).png">Type 2</option>
+            <option value="Front (3).png">Type 3</option>
+        </select>
+        <br>
+        <br>
+        <input type="number" id="width" placeholder="Width (px)" />
+        <input type="number" id="height" placeholder="Height (px)" />
+        <br>
+        <br>
+        <!-- Dropdown for Overlay -->
+        <label for="overlay-select">Keyword</label>
+        
+    <br>
+        <input type="file" id="keywordsFile" accept=".txt">
+
+        <br><br>
+        <div id="inputFields">
+            <!-- Dynamic input fields will be generated here -->
+        </div>
+
+        <div class="mb-3">
+            <button class="btn btn-primary" id="generateCard">Generate Card</button>
+            <button class="btn btn-success" id="saveCard">Save as Image</button>
+        </div>
+
+        <canvas id="cardCanvas" class="border"></canvas>
+    </div>
+
+    <script src="scripts.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@0.5.0-beta4/dist/html2canvas.min.js"></script>
+
+
+
+</body>
+</html>
