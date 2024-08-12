@@ -1,0 +1,165 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Resizer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        input {
+            margin: 10px;
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        canvas {
+            display: block;
+            margin: 20px auto;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Card Creator</h1>
+        <input type="number" id="width" placeholder="Width (px)" />
+        <input type="number" id="height" placeholder="Height (px)" />
+        <button id="saveCardButton">Save Card</button>
+        <canvas id="cardCanvas" width="400" height="600"></canvas>
+    </div>
+    <script>
+        const cardCanvas = document.getElementById('cardCanvas');
+        const cardCtx = cardCanvas.getContext('2d');
+
+        // Example elements on the card
+        cardCtx.fillStyle = '#e0e0e0';
+        cardCtx.fillRect(0, 0, cardCanvas.width, cardCanvas.height); // Background
+        cardCtx.fillStyle = 'black';
+        cardCtx.font = '24px Arial';
+        cardCtx.fillText('Sample Card Text', 50, 100); // Text
+        cardCtx.fillStyle = 'blue';
+        cardCtx.fillRect(50, 150, 100, 50); // Rectangle element
+
+        document.getElementById('saveCardButton').addEventListener('click', () => {
+            const width = parseInt(document.getElementById('width').value, 10);
+            const height = parseInt(document.getElementById('height').value, 10);
+
+            if (!width || !height) {
+                alert('Please enter width and height.');
+                return;
+            }
+
+            // Create a temporary canvas for resizing
+            const tempCanvas = document.createElement('canvas');
+            const tempCtx = tempCanvas.getContext('2d');
+
+            // Set dimensions of the temporary canvas
+            tempCanvas.width = width;
+            tempCanvas.height = height;
+
+            // Draw the current card canvas onto the temporary canvas with scaling
+            tempCtx.drawImage(cardCanvas, 0, 0, width, height);
+
+            // Generate and download the resized image
+            const link = document.createElement('a');
+            link.download = 'card.png';
+            link.href = tempCanvas.toDataURL('image/png');
+            link.click();
+        });
+    </script>
+</body>
+</html> -->
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card Download</title>
+    <style>
+        #myCanvas {
+            border: 1px solid black;
+        }
+        #downloadButton {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="myCanvas" width="500" height="700"></canvas>
+    <button id="downloadButton">Download Card</button>
+
+    <script>
+        const canvas = document.getElementById('myCanvas');
+        const ctx = canvas.getContext('2d');
+
+        const images = {
+            type: new Image(),
+            attack: new Image(),
+            life: new Image(),
+        };
+
+        images.type.src = 'Type.png'; // Ensure these are correct relative paths
+        images.attack.src = 'Attack.png';
+        images.life.src = 'Life.png';
+
+        let imagesLoaded = 0;
+        const totalImages = Object.keys(images).length;
+
+        function onImageLoad() {
+            imagesLoaded++;
+            if (imagesLoaded === totalImages) {
+                drawCard();
+            }
+        }
+
+        for (const key in images) {
+            images[key].addEventListener('load', onImageLoad);
+        }
+
+        function drawCard() {
+            ctx.fillStyle = 'lightblue';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.drawImage(images.type, 10, 10, 100, 100);
+            ctx.drawImage(images.attack, 10, 120, 100, 100);
+            ctx.drawImage(images.life, 10, 230, 100, 100);
+            ctx.fillStyle = 'black';
+            ctx.font = '30px Arial';
+            ctx.fillText('My Card', 50, 50);
+        }
+
+        function downloadCanvasAsImage() {
+            const link = document.createElement('a');
+            link.download = 'card.png';
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        }
+
+        document.getElementById('downloadButton').addEventListener('click', downloadCanvasAsImage);
+    </script>
+</body>
+</html>

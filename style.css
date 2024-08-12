@@ -1,0 +1,58 @@
+
+@font-face { 
+    font-family: 'MyFont'; 
+    src: 
+        url('Dalmation-FREE.otf')  
+        format('opentype'); 
+    font-weight: normal; 
+    font-style: normal; 
+} 
+@font-face { 
+    font-family: 'bebas'; 
+    src: 
+        url('BebasNeue-Regular.otf')  
+        format('opentype'); 
+    font-weight: normal; 
+    font-style: normal; 
+} 
+
+
+
+
+body {
+    background-color: #343a40; /* Darker background color */
+    font-family: Arial, Helvetica, sans-serif;
+    color: #e9ecef; /* Light text color for contrast */
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 90%; /* Make it responsive */
+    width: 600px; /* Set a maximum width */
+    margin: 20px auto; /* Center the container and add vertical margin */
+    padding: 20px;
+    background-color: #495057; /* Darker background for the container */
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3); /* Slightly more pronounced shadow */
+}
+
+canvas {
+    display: block;
+    margin: 0 auto;
+    border: 1px solid #6c757d; /* Slightly darker border color */
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+    .container {
+        max-width: 100%;
+        padding: 15px;
+    }
+}
+
+@media (max-width: 576px) {
+    .container {
+        padding: 10px;
+    }
+}

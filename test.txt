@@ -1,0 +1,2 @@
+{"boldKeywords": ["important", "special"]}
+{"iconMappings": {"smile!": "Type.png", "heart!": "heart_icon.png"}}
