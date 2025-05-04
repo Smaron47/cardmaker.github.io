@@ -1,0 +1,177 @@
+
+🃏 Card Maker – Project Documentation
+
+📘 Table of Contents
+1. Project Overview
+2. Project Structure
+3. Core Components
+4. Functionality Breakdown
+5. User Workflow
+6. Font Integration
+7. Responsiveness
+8. To-Do / Future Improvements
+9. Technical Stack
+10. Keyword File Format
+11. Notes
+
+---
+
+1. Project Overview
+
+Card Maker is a web application designed for creating customized digital cards. Users can choose from predefined templates, add icons, text overlays, and upload keyword files to modify card behavior or content. The interface renders a preview using the HTML5 <canvas> element, and the final output can be saved as an image.
+
+This project can be used to generate game cards, trading cards, character cards, or any customizable visual card format.
+
+---
+
+2. Project Structure
+
+/
+├── index.html               # Main web page
+├── style.css                # Styles for layout and custom fonts
+├── scripts.js               # JavaScript for rendering and interactivity
+├── /fonts                   # Custom font files
+│   ├── Dalmation-FREE.otf
+│   └── BebasNeue-Regular.otf
+├── /assets (or /images)     # Optional folder for images used in dropdowns
+│   ├── Name2.png
+│   ├── Front (1).png
+│   └── ...
+
+---
+
+3. Core Components
+
+🔹 HTML (index.html)
+- Uses Bootstrap 5 for styling.
+- Contains:
+  - Dropdowns to select:
+    - Card template (e.g., Creature, Mécanisme).
+    - Card name banner.
+    - Top-left icon.
+  - File input for .txt file upload (keywords or descriptions).
+  - Dynamic container for displaying extra inputs (generated from file).
+  - A canvas element for rendering the card.
+  - Buttons: "Generate Card" and "Save as Image".
+
+🔹 CSS (style.css)
+- Applies a dark theme for modern aesthetics and contrast.
+- Uses custom fonts via @font-face:
+  - 'MyFont': Dalmatian-style font.
+  - 'bebas': Clean display font.
+- Responsive container layout using media queries.
+- Styled canvas with borders and centered alignment.
+
+🔹 JavaScript (scripts.js)
+(Not shown in your example but assumed):
+- Handles image drawing onto the canvas.
+- Loads selected image and text values.
+- Reads .txt files for keywords or traits.
+- Renders output to <canvas>.
+- Converts canvas output to image for download.
+
+---
+
+4. Functionality Breakdown
+
+| Feature                     | Description |
+|----------------------------|-------------|
+| Template Selection          | Dropdown to choose base card style. |
+| Card Name Selection         | Dropdown to choose a name banner image. |
+| Icon Selection              | Dropdown to select a top-left icon image. |
+| Keyword Upload              | Upload a .txt file containing keywords/traits for the card. |
+| Canvas Rendering            | Dynamically renders the card preview. |
+| Image Export                | Saves the card preview as a downloadable PNG image. |
+
+---
+
+5. User Workflow
+
+1. Launch Page – User accesses index.html in the browser.
+2. Select Template – Choose card style (e.g., Creature, Mécanisme).
+3. Choose Elements – Select:
+   - A card name image.
+   - An icon for the top-left.
+4. Upload Keywords – Upload a .txt file containing card traits or behaviors.
+5. Generate Card – Click "Generate Card" to render the card on the canvas.
+6. Save Image – Click "Save as Image" to download the rendered card.
+
+---
+
+6. Font Integration
+
+@font-face {
+    font-family: 'MyFont';
+    src: url('Dalmation-FREE.otf') format('opentype');
+}
+@font-face {
+    font-family: 'bebas';
+    src: url('BebasNeue-Regular.otf') format('opentype');
+}
+
+- Fonts are embedded locally for consistent rendering across browsers.
+- Assign font-family: 'MyFont' or 'bebas' in CSS for any text elements.
+
+---
+
+7. Responsiveness
+
+The .container element adjusts layout based on screen width:
+
+| Screen Size       | Behavior |
+|-------------------|----------|
+| > 768px (desktop) | Max width: 600px, padding: 20px |
+| < 768px (tablet)  | Full width, padding: 15px |
+| < 576px (mobile)  | Padding reduced to 10px |
+
+Bootstrap classes (.container, .mt-4, .form-select, etc.) handle responsive layout and spacing.
+
+---
+
+8. To-Do / Future Improvements
+
+- Keyword Parsing – Implement logic to parse uploaded .txt file and generate dynamic input fields.
+- Canvas Layout – Improve placement and styling of elements in the canvas.
+- Error Handling – Add UI feedback for missing selections or invalid uploads.
+- Template Support – Enable switching backgrounds/images based on selected template.
+- Font Controls – Let users pick fonts and sizes for card text.
+
+---
+
+9. Technical Stack
+
+| Technology | Purpose |
+|------------|---------|
+| HTML5      | Structure and semantics |
+| CSS3       | Styling and layout |
+| JavaScript | Interactivity and rendering |
+| Bootstrap 5| Responsive layout and UI components |
+| Canvas API | Custom rendering and image export |
+| Local Fonts| Style customization |
+
+---
+
+10. Keyword File Format Example
+
+The .txt file uploaded via #keywordsFile is expected to contain one keyword per line. These may represent card effects, traits, or descriptions.
+
+Example:
+Flying
+Double Damage
+Poisonous
+Lifesteal
+
+Your JavaScript should:
+- Read this file.
+- Create one <input> or <checkbox> per keyword in #inputFields.
+
+Optional: Allow values like keyword:value to set specific stats (e.g., Health:5).
+
+---
+
+11. Notes
+
+- All images referenced in dropdowns must exist in your project directory or appropriate folders (assets/, images/).
+- Ensure your canvas rendering logic handles image loading asynchronously to avoid blank renders.
+- The current version is a template; actual drawing logic (in scripts.js) must be completed.
+- Test across screen sizes to confirm responsiveness.
